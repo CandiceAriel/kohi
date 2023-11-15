@@ -8,6 +8,7 @@ part of 'coffee.dart';
 
 Coffee _$CoffeeFromJson(Map<String, dynamic> json) => Coffee(
       name: json['name'] as String,
+      currency: json['currencyFormat'] as String,
       price: json['price'] as String,
       imagePath: json['imagePath'] as String,
       description: json['description'] as String,
@@ -15,6 +16,7 @@ Coffee _$CoffeeFromJson(Map<String, dynamic> json) => Coffee(
 
 Map<String, dynamic> _$CoffeeToJson(Coffee instance) => <String, dynamic>{
       'name': instance.name,
+      'currency': instance.currency,
       'price': instance.price,
       'imagePath': instance.imagePath,
       'description': instance.description,

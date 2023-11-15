@@ -8,6 +8,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 import '../model/coffee_shop.dart';
+import '../model/order.dart';
 
 class OrderPage extends StatefulWidget {
   final Coffee coffee;
@@ -28,8 +29,21 @@ class _OrderPageState extends State<OrderPage> {
     "16oz"
   ];
 
+  void creteNewOrder() {
+    int Id = Provider.of<CoffeeMenu>(context, listen: false).getAllOrders().length;
+    Order newOrder = Order(
+      Id: Id,
+      name: widget.coffee.name,
+      price: widget.coffee.price,
+      qty: 1,
+    );
+  }
+
   void addToCart(){
-    Provider.of<CoffeeMenu>(context, listen: false).addToCart(widget.coffee);
+    int Id = Provider.of<CoffeeMenu>(context, listen: false).getAllOrders().length;
+    Provider.of<CoffeeMenu>(context, listen: false).addToCart(
+      Order(Id: Id, name: widget.coffee.name, price: widget.coffee.price, qty: 1)
+    );
     showDialog(
       context: context, builder: (context) => AlertDialog(
         content: Column(
@@ -45,7 +59,7 @@ class _OrderPageState extends State<OrderPage> {
   }
 
   void orderNow(){
-    Provider.of<CoffeeMenu>(context, listen: false).addToCart(widget.coffee);
+    Provider.of<CoffeeMenu>(context, listen: false).addToCartCoffee(widget.coffee);
     showDialog(
       context: context, builder: (context) => AlertDialog(
         title: Text("Added"),

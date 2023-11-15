@@ -5,18 +5,18 @@ part 'order.g.dart';
 @JsonSerializable(nullable: false)
 
 class Order {
-  final int Id;
-  final String name;
-  final String price;
-  final int qty;
-  final double total;
+  int Id;
+  String name;
+  String price;
+  int qty;
+  //double total;
 
   Order({
     required this.Id,
     required this.name,
     required this.price,
     required this.qty,
-    required this.total
+    //required this.total
   });
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);

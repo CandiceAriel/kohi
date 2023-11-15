@@ -6,12 +6,14 @@ part 'coffee.g.dart';
 
 class Coffee {
   final String name;
+  final String currency;
   final String price;
   final String imagePath;
   final String description;
 
   Coffee({
     required this.name,
+    required this.currency,
     required this.price,
     required this.imagePath,
     required this.description,

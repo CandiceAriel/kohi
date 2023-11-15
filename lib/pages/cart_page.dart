@@ -4,6 +4,7 @@ import 'package:kohi/model/coffee_shop.dart';
 import 'package:provider/provider.dart';
 
 import '../model/coffee.dart';
+import '../model/order.dart';
 
 class CartPage extends StatefulWidget {
 
@@ -25,8 +26,8 @@ class _CartPageState extends State<CartPage> {
     print(uniqueOrders.length);
   }
 
-  void removeFromCart(Coffee coffee){
-    Provider.of<CoffeeMenu>(context, listen: false).removeItemFromCart(coffee);
+  void removeFromCart(Order order){
+    Provider.of<CoffeeMenu>(context, listen: false).removeItemFromCart(order);
     showDialog(
       context: context, builder: (context) => AlertDialog(
         title: Text("Removed"),
@@ -56,12 +57,12 @@ class _CartPageState extends State<CartPage> {
               children: [
                 Expanded(
                   child: ListView.builder(
-                    itemCount: value.userCart.length,
+                    itemCount: value.getAllOrders().length,
                     itemBuilder: (context, index) {
-                      Coffee coffeeItem = value.userCart[index];
+                      Order coffeeItem = value.getAllOrders()[index];
                       //ProductListTile(coffee: coffee);
-                      if( value.userCart.isNotEmpty){
-                        return ProductListTile(coffee: coffeeItem, qty: value.qty, onPressed: () => removeFromCart(coffeeItem));
+                      if( value.getAllOrders().isNotEmpty){
+                        return ProductListTile(order: coffeeItem, qty: value.qty, onPressed: () => removeFromCart(coffeeItem));
                       } else {
                         return Text("Cart is empty");
                       }

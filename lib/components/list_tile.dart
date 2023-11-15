@@ -3,15 +3,16 @@ import 'package:provider/provider.dart';
 
 import '../model/coffee.dart';
 import '../model/coffee_shop.dart';
+import '../model/order.dart';
 
 class ProductListTile extends StatelessWidget {
-  final Coffee coffee;
+  final Order order;
   final int qty;
   void Function()? onPressed;
 
   ProductListTile({
     Key? key, 
-    required this.coffee, 
+    required this.order, 
     required this.qty,
     required this.onPressed
   }) : super(key: key);
@@ -32,11 +33,11 @@ class ProductListTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                coffee.name,
+                order.name,
                 style: const TextStyle( fontSize: 20, fontWeight: FontWeight.w800 ),
               ),
               Text(
-                coffee.price,
+                "£ ${order.price}",
                 style: const TextStyle( fontSize: 16),
               )
             ],
