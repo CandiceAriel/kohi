@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kohi/model/coffee.dart';
 import 'package:kohi/pages/cart_page.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 import '../model/coffee_shop.dart';
@@ -31,7 +32,14 @@ class _OrderPageState extends State<OrderPage> {
     Provider.of<CoffeeMenu>(context, listen: false).addToCart(widget.coffee);
     showDialog(
       context: context, builder: (context) => AlertDialog(
-        title: Text("Added"),
+        content: Column(
+           mainAxisSize: MainAxisSize.min,
+          children: [
+            Lottie.network("https://lottie.host/57253943-d232-4249-a056-936cd14e2902/EPOcq41u70.json"),
+            Text('Added to cart')
+          ],
+        )
+        
       )
     );
   }
