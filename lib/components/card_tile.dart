@@ -41,7 +41,7 @@ class CardTile extends StatelessWidget {
                           coffee.name,
                           textAlign: TextAlign.left,
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 16,
                             fontWeight: FontWeight.w800,
                           ),
                         ), 
@@ -49,7 +49,7 @@ class CardTile extends StatelessWidget {
                           coffee.price,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 16,
                             color: Colors.grey[500]
                           ),
                         )
