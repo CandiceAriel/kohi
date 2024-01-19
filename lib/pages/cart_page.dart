@@ -8,9 +8,7 @@ import '../model/order.dart';
 
 class CartPage extends StatefulWidget {
 
-  CartPage({
-    super.key,
-  });
+  const CartPage({Key? key}) : super(key: key);
 
   @override
   State<CartPage> createState() => _CartPageState();
@@ -23,13 +21,13 @@ class _CartPageState extends State<CartPage> {
     final cartItemList = Provider.of<CoffeeMenu>(context, listen: false).userCart;
     var uniqueOrders = cartItemList.toSet().toList();
     cartItems.add(uniqueOrders);
-    print(uniqueOrders.length);
   }
 
   void removeFromCart(Order order){
     Provider.of<CoffeeMenu>(context, listen: false).removeItemFromCart(order);
     showDialog(
-      context: context, builder: (context) => AlertDialog(
+      context: context, 
+      builder: (context) => const AlertDialog(
         title: Text("Removed"),
       )
     );
@@ -37,7 +35,6 @@ class _CartPageState extends State<CartPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getUserCartList();
   }
@@ -45,37 +42,38 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Consumer<CoffeeMenu>(
-      builder: (context, value, child) => Scaffold(
-        appBar: AppBar(
-          title: Text("Your Orders"),
+      builder: (context, value, child) {
+       return Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.all(20),
+        color: Colors.blue.shade900,
+        child: Column(
+          children: [
+            Expanded(
+              child: value.getAllOrders().isNotEmpty
+              ? ListView.builder(
+                  itemCount: value.getAllOrders().length,
+                  itemBuilder: (context, index) {
+                    Order coffeeItem = value.getAllOrders()[index];
+                    return ProductListTile(
+                      order: coffeeItem,
+                      qty: value.qty,
+                      onPressed: () => removeFromCart(coffeeItem)
+                    );
+                  },
+              )
+              : Center(
+                child: Text("Cart is empty")
+              ),
+            ),
+          ],
         ),
-        body: SafeArea(
-          child: Container(
-            padding: EdgeInsets.all(20),
-            color: Colors.blue.shade900,
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: value.getAllOrders().length,
-                    itemBuilder: (context, index) {
-                      Order coffeeItem = value.getAllOrders()[index];
-                      //ProductListTile(coffee: coffee);
-                      if( value.getAllOrders().isNotEmpty){
-                        return ProductListTile(order: coffeeItem, qty: value.qty, onPressed: () => removeFromCart(coffeeItem));
-                      } else {
-                        return Text("Cart is empty");
-                      }
-                    }
-                  )
-                )
-              ],
-            )
-          )
+      );
           
-        )
         
-      )
+        
+      }
     );
   }
 }

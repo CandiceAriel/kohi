@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:kohi/model/coffee_shop.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kohi/pages/cart_page.dart';
 
 //import components
 import 'package:kohi/pages/home_page.dart';
+import 'package:kohi/routes.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -39,7 +41,9 @@ class MainApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        home: HomePage(),
+        initialRoute: '/',
+        routes: routes,
+        home: const HomePage(),
       )
     );
   }

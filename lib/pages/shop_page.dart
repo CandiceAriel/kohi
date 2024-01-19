@@ -5,19 +5,18 @@ import 'package:provider/provider.dart';
 
 import 'package:kohi/components/card_tile.dart';
 import 'package:kohi/pages/order_page.dart';
-import 'package:kohi/APIs/coffee_provider.dart';
 
 import '../model/coffee.dart';
 import '../model/coffee_shop.dart';
 
-class CoffeeShop extends StatefulWidget {
-  const CoffeeShop({super.key});
+class MenuScreen extends StatefulWidget {
+  const MenuScreen({super.key});
 
   @override
-  State<CoffeeShop> createState() => _CoffeeShopState();
+  State<MenuScreen> createState() => _MenuScreenState();
 }
 
-class _CoffeeShopState extends State<CoffeeShop> {
+class _MenuScreenState extends State<MenuScreen> {
   List listCoffee = [];
 
   Future<List<Coffee>> readJson() async {

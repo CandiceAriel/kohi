@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kohi/model/coffee.dart';
-import 'package:kohi/pages/cart_page.dart';
+import 'package:kohi/routes.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
@@ -69,12 +69,8 @@ class _OrderPageState extends State<OrderPage> {
   }
 
   goToCartPage(){
-    Navigator.push(
-      context, 
-      MaterialPageRoute(
-        builder: (context) => CartPage()
-      )
-    );
+    Navigator.pushNamed(context, '/cart');
+
   }
 
   @override
