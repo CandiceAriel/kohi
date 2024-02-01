@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_view_widgets/flutter_view_widgets.dart';
 
 import '../model/coffee.dart';
 import '../model/coffee_shop.dart';

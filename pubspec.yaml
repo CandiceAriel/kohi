@@ -13,6 +13,7 @@ dependencies:
   json_annotation: ^4.8.1
   provider:
   lottie: ^2.7.0
+  flutter_view_widgets: ^2.2.5-dev.1
 
 dev_dependencies:
   flutter_test:

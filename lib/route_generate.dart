@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:kohi/pages/cart_page.dart';
-import 'package:kohi/pages/home_page.dart';
-import 'package:kohi/pages/order_page.dart';
-import 'package:kohi/pages/shop_page.dart';
+import 'package:kohi/screens/cart_screen.dart';
+import 'package:kohi/screens/home_screen.dart';
+import 'package:kohi/screens/order_screen.dart';
+import 'package:kohi/screens/menu_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {

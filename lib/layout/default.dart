@@ -13,7 +13,7 @@ class DefaultScaffold extends StatefulWidget {
     Key? key,
     required this.bodyWidget,
     this.title = '',
-    this.isShowMenu = false,
+    this.isShowLeading = false,
     this.isShowAction = false,
     this.isBodyScroll = true,
     this.disableExpiryCheck = false,
@@ -22,7 +22,7 @@ class DefaultScaffold extends StatefulWidget {
 
   Widget bodyWidget;
   String title;
-  bool isShowMenu;
+  bool isShowLeading;
   bool isShowAction;
   bool isBodyScroll;
   bool disableExpiryCheck;
@@ -48,15 +48,7 @@ class _DefaultWidgetState extends State<DefaultScaffold> {
             ]));
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Kohi"),
-        actions: <Widget>[
-          IconButton(
-            onPressed: goToCartPage, 
-            icon: Icon(Icons.shopping_cart)
-          )
-        ],
-      ),
+      appBar: _createAppBar( context, widget.title, widget.isShowLeading ),
       body: SafeArea(
         child: widget.isBodyScroll
           ? SingleChildScrollView(
@@ -84,3 +76,34 @@ class _DefaultWidgetState extends State<DefaultScaffold> {
     Navigator.pushNamed(context, '/cart');
   }
 }
+
+AppBar _createAppBar(context, title, isShowLeading){
+    return AppBar(
+      centerTitle: true,
+      title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+      leading: Builder( 
+        builder: (BuildContext context) {
+          return isShowLeading 
+          ? IconButton(
+            padding: EdgeInsets.zero,
+            //constraints: const BoxConstraints(),
+            icon: const Icon(Icons.menu_rounded),
+            onPressed: () {})
+          : IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/');
+              },
+              icon: Icon(Icons.chevron_left),
+            );
+        }),
+      actions: [
+        IconButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/cart');
+          }, 
+            icon: Icon(Icons.shopping_cart)
+        )
+      ],
+    );
+  }
+
