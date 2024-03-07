@@ -69,7 +69,7 @@ class _MenuScreenState extends State<MenuScreen> {
               Container(
                 margin: EdgeInsets.only(top: 30.0, bottom: 30.0),
                 child: Text(
-                  'Hi, User! What can we get you today?',
+                  'Hi, User! What can we get you today??',
                   style:  Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontWeight: FontWeight.w800,
                     color: Colors.white
